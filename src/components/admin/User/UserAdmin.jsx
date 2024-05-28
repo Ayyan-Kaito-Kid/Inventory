@@ -16,13 +16,7 @@ function UserAdmin() {
   const convert = JSON.parse(data);
   const token = convert.token;
 
-  if (!convert || convert.role !== 'admin') {
-    return <Navigate to="/unauthorized" />;
-  }
-  const headers = {
-    Authorization: `${token}`
-  };
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,6 +31,14 @@ function UserAdmin() {
 
     fetchData();
   }, [createFormClosed]);
+  
+  if (!convert || convert.role !== 'admin') {
+    return <Navigate to="/unauthorized" />;
+  }
+  const headers = {
+    Authorization: `${token}`
+  };
+
 
   const toggleCreateForm = () => {
     setShowCreateForm(!showCreateForm);

@@ -18,12 +18,7 @@ function BatchSaleAdmin() {
     const convert = JSON.parse(data);
     const token = convert.token;
    
-  
-    if (!convert || convert.role !== 'admin') {
-      return <Navigate to="/unauthorized" />;
-    }
-   
-  
+    
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -44,6 +39,12 @@ function BatchSaleAdmin() {
   
       fetchData();
     }, [createFormClosed, updatingBatchId]);
+  
+    if (!convert || convert.role !== 'admin') {
+      return <Navigate to="/unauthorized" />;
+    }
+   
+  
   
     const toggleCreateForm = () => {
       setShowCreateForm(!showCreateForm);

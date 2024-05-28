@@ -18,13 +18,7 @@ function ProductAdmin() {
   const data = localStorage.getItem('userData');
   const convert = JSON.parse(data);
   const token = convert.token;
-  if (!convert || convert.role !== 'admin') {
-    return <Navigate to="/unauthorized" />;
-  }
-  const headers = {
-    Authorization: `${token}`
-  };
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,6 +33,14 @@ function ProductAdmin() {
 
     fetchData();
   }, [createFormClosed, editingProductId]);
+  
+  if (!convert || convert.role !== 'admin') {
+    return <Navigate to="/unauthorized" />;
+  }
+  const headers = {
+    Authorization: `${token}`
+  };
+
 
 
  
