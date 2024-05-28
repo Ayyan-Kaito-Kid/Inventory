@@ -1,3 +1,4 @@
+/* eslint no-use-before-define: 0 */
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import AdminNavbar from '../AdminNavbar/AdminNavbar';
@@ -38,7 +39,7 @@ function CompanyAdmin() {
 
         fetchData();
     }, [createFormClosed, editingCompanyId]);
-    
+
     if (!convert || convert.role !== 'admin') {
         return <Navigate to="/unauthorized" />;
     }
